@@ -1,0 +1,98 @@
+{
+  "name": "stravibe-cursor",
+  "displayName": "StraVIBE for Cursor",
+  "description": "Report your Cursor AI usage to the StraVIBE leaderboard — Strava for vibe coders.",
+  "version": "0.1.0",
+  "publisher": "stravibe",
+  "license": "UNLICENSED",
+  "author": "Muhammad Hatif Mujahid",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "cursor",
+    "usage",
+    "tokens",
+    "leaderboard",
+    "stravibe"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hatifmujahid/straVIBE.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hatifmujahid/straVIBE/issues"
+  },
+  "homepage": "https://stravibe.vercel.app",
+  "icon": "icon.png",
+  "main": "./out/extension.js",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "stravibe.login",
+        "title": "StraVIBE: Sign in / link account"
+      },
+      {
+        "command": "stravibe.syncNow",
+        "title": "StraVIBE: Sync Cursor usage now"
+      },
+      {
+        "command": "stravibe.logout",
+        "title": "StraVIBE: Sign out"
+      },
+      {
+        "command": "stravibe.openLeaderboard",
+        "title": "StraVIBE: Open leaderboard"
+      },
+      {
+        "command": "stravibe.showDiagnostics",
+        "title": "StraVIBE: Show diagnostics"
+      }
+    ],
+    "configuration": {
+      "title": "StraVIBE",
+      "properties": {
+        "stravibe.autoSync": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically sync Cursor usage to the leaderboard in the background."
+        },
+        "stravibe.syncIntervalMinutes": {
+          "type": "number",
+          "default": 30,
+          "minimum": 5,
+          "description": "How often (in minutes) to sync usage when auto-sync is enabled."
+        },
+        "stravibe.handle": {
+          "type": "string",
+          "default": "",
+          "description": "Optional public display name shown on the leaderboard. Leave blank to use your account name."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package",
+    "publish:ovsx": "ovsx publish"
+  },
+  "dependencies": {
+    "sql.js": "^1.12.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/sql.js": "^1.4.11",
+    "@types/vscode": "^1.85.0",
+    "@vscode/vsce": "^3.2.0",
+    "ovsx": "^0.10.0",
+    "typescript": "^5.4.0"
+  }
+}

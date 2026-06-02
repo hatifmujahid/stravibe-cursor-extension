@@ -1,0 +1,23 @@
+.vscode/**
+.github/**
+.gitignore
+.gitattributes
+src/**
+scripts/**
+icon.svg
+tsconfig.json
+**/*.ts
+**/*.map
+**/.DS_Store
+node_modules/.cache/**
+
+# sql.js ships many builds; we only load sql-wasm.js + sql-wasm.wasm.
+node_modules/sql.js/dist/sql-asm*
+node_modules/sql.js/dist/sql-wasm-browser.*
+node_modules/sql.js/dist/*debug*
+node_modules/sql.js/dist/worker.*
+node_modules/sql.js/.devcontainer/**
+node_modules/sql.js/*.md
+node_modules/sql.js/.jsdoc.config.json
+node_modules/sql.js/.eslintrc.js
+node_modules/sql.js/eslint.config.cjs
