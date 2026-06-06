@@ -5,7 +5,7 @@ import { getToken } from "./auth";
 import { collectCursorUsage, type Logger } from "./cursorUsage";
 import { cumulative, ingestSnapshot, loadStore, saveStore, type Store } from "./store";
 
-const CLIENT_VERSION = "0.1.0";
+const CLIENT_VERSION = "0.3.0";
 
 export class NotLinkedError extends Error {
   code = "NOT_LINKED";
@@ -61,7 +61,7 @@ export function buildPayload(store: Store, handle: string | null) {
     },
     by_model,
     by_day: store.byDay,
-    client: { name: "stravibe-cursor", version: CLIENT_VERSION },
+    client: { name: "stravibe-extension", version: CLIENT_VERSION },
   };
 }
 

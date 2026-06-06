@@ -1,20 +1,25 @@
-# StraVIBE for Cursor
+# StraVIBE
 
-Report your **Cursor** AI usage to the [StraVIBE](https://stravibe.vercel.app)
+Report your **AI coding usage** to the [StraVIBE](https://stravibe.vercel.app)
 leaderboard — *Strava for vibe coders*. A status-bar widget that links your
-account, reads your Cursor token usage, and submits the cumulative total to the
-leaderboard backend.
+account, reads your editor's token usage, and submits the cumulative total to
+the leaderboard backend.
 
-This is the Cursor companion to the [`stravibe`](https://www.npmjs.com/package/stravibe)
-CLI (which covers Claude Code and Codex). Run both and your Cursor usage **adds
+Runs in any VS Code-based editor. Usage is read per editor via a dedicated
+collector — **Cursor** is supported today, with VS Code and Antigravity
+planned. Each editor reports as its own device, so usage **adds** rather than
+overwrites.
+
+This is the editor companion to the [`stravibe`](https://www.npmjs.com/package/stravibe)
+CLI (which covers Claude Code and Codex). Run both and your editor usage **adds
 to** your Claude Code / Codex usage on the same machine — they report as
 separate devices and the backend sums them.
 
 ## Install
 
-Cursor's in-app **Extensions** panel installs from [Open VSX](https://open-vsx.org).
-Once published there, search "StraVIBE" and click Install. Or sideload the
-`.vsix`: **Extensions → ⋯ → Install from VSIX…**.
+The in-app **Extensions** panel of VS Code / Cursor installs from
+[Open VSX](https://open-vsx.org). Once published there, search "StraVIBE" and
+click Install. Or sideload the `.vsix`: **Extensions → ⋯ → Install from VSIX…**.
 
 ## Use
 
@@ -33,6 +38,10 @@ Once published there, search "StraVIBE" and click Install. Or sideload the
 | `stravibe.handle` | `""` | Optional public display name on the leaderboard. |
 
 ## How it reads usage — and the honest caveats
+
+Usage is collected per editor. The sections below describe the **Cursor**
+collector (`src/cursorUsage.ts`), the one supported today; other editors will
+get their own collectors following the same fail-safe pattern.
 
 Cursor exposes **no public extension API** for token usage. To get real numbers
 this extension:
@@ -68,7 +77,7 @@ leave your machine. Prompts, code, file paths, and chat content are never read.
 ```sh
 npm install
 npm run compile        # tsc -> out/
-npm run package        # vsce package -> stravibe-cursor-<version>.vsix
+npm run package        # vsce package -> stravibe-extension-<version>.vsix
 npm run publish:ovsx   # ovsx publish  (needs OVSX_PAT)
 ```
 

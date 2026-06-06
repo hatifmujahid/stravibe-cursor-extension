@@ -1,8 +1,8 @@
 {
-  "name": "stravibe-cursor",
-  "displayName": "StraVIBE for Cursor",
-  "description": "Report your Cursor AI usage to the StraVIBE leaderboard — Strava for vibe coders.",
-  "version": "0.1.0",
+  "name": "stravibe-extension",
+  "displayName": "StraVIBE",
+  "description": "Report your AI coding usage to the StraVIBE leaderboard — Strava for vibe coders. Works in VS Code, Cursor, and other VS Code-based editors.",
+  "version": "0.3.0",
   "publisher": "stravibe",
   "license": "UNLICENSED",
   "author": "Muhammad Hatif Mujahid",
@@ -13,6 +13,7 @@
     "Other"
   ],
   "keywords": [
+    "vscode",
     "cursor",
     "usage",
     "tokens",
@@ -40,7 +41,7 @@
       },
       {
         "command": "stravibe.syncNow",
-        "title": "StraVIBE: Sync Cursor usage now"
+        "title": "StraVIBE: Sync usage now"
       },
       {
         "command": "stravibe.logout",
@@ -61,7 +62,7 @@
         "stravibe.autoSync": {
           "type": "boolean",
           "default": true,
-          "description": "Automatically sync Cursor usage to the leaderboard in the background."
+          "description": "Automatically sync your editor AI usage to the leaderboard in the background."
         },
         "stravibe.syncIntervalMinutes": {
           "type": "number",

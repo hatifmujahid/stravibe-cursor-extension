@@ -23,12 +23,12 @@ async function updateStatusBar(context: vscode.ExtensionContext): Promise<void> 
   const linked = await isLinked(context);
   if (!linked) {
     statusBar.text = "$(graph) StraVIBE: sign in";
-    statusBar.tooltip = "Click to link your StraVIBE account and start reporting Cursor usage.";
+    statusBar.tooltip = "Click to link your StraVIBE account and start reporting your AI coding usage.";
   } else {
     const user: LinkedUser | undefined = getUser(context);
     const who = user?.name || user?.login || user?.email || "linked";
     statusBar.text = `$(graph) StraVIBE: ${fmt(lastTotal)}`;
-    statusBar.tooltip = `StraVIBE — ${who}\nCumulative Cursor tokens reported: ${lastTotal.toLocaleString()}\nClick for options.`;
+    statusBar.tooltip = `StraVIBE — ${who}\nCumulative tokens reported: ${lastTotal.toLocaleString()}\nClick for options.`;
   }
   statusBar.show();
 }
@@ -83,7 +83,7 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
       try {
         const user = await login(context);
         if (user) {
-          vscode.window.showInformationMessage("StraVIBE: account linked. Syncing your Cursor usage…");
+          vscode.window.showInformationMessage("StraVIBE: account linked. Syncing your usage…");
           await runSync(context, false);
           restartTimer(context);
         }
